@@ -1,0 +1,58 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train_Report</title>
+    <link rel="stylesheet" href="{%static 'css\report.css'%}">
+</head>
+<body>
+    <h1>Please find below details of Fare</h1>
+
+    <div class="Reports">
+        {% if fare %}
+
+        <table>
+
+            <thead>
+                <th>train_id</th>
+                <th>origin_city</th>
+                <th>destination_city</th>
+                <th>train_fare</th>
+            </thead>
+
+            {% for x in fare %}
+            <tr>
+                <td>{{x.train_id}}</td>
+                <td>{{x.origin_city}}</td>
+                <td>{{x.destination_city}}</td>
+                <td>{{x.train_fare}}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+        <p>No fare_details found</p>
+        {% endif %}
+    </div>
+
+    <div class="list">
+        <h2>Fare details in the form of list</h2>
+        {% if fare %}
+        <ol> 
+            {% for x in  fare %}
+            <li>train_id:{{x.train_id}}</li>
+
+            <ol>
+                <li>origin_city:{{x.origin_city}}</li>
+                <li>destination_city:{{x.Destination_city}}</li>
+                <li>train_fare:{{x.train_fare}}</li>
+            </ol>
+            {% endfor %}
+        </ol>
+        {% endif %}
+    </div>
+</body>
+</html>

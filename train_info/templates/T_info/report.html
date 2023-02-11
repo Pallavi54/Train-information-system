@@ -1,0 +1,64 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train_Report</title>
+    <link rel="stylesheet" href="{%static 'css\report.css'%}">
+</head>
+<body>
+    <h1>Please find below details of Trains</h1>
+
+    <div class="Reports">
+        {% if train_details %}
+
+        <table>
+
+            <thead>
+                <th>Train_id</th>
+                <th>Train_name</th>
+                <th>Origin_city</th>
+                <th>Destination_city</th>
+                <th>Departure_time</th>
+                <th>Arrival_time</th>
+            </thead>
+
+            {% for x in train_details %}
+            <tr>
+                <td>{{x.Train_id}}</td>
+                <td>{{x.Train_name}}</td>
+                <td>{{x.Origin_city}}</td>
+                <td>{{x.Destination_city}}</td>
+                <td>{{x.Departure_time}}</td>
+                <td>{{x.Arrival_time}}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+        <p>No train_details found</p>
+        {% endif %}
+    </div>
+
+    <div class="list">
+        <h2>Train details in the form of list</h2>
+        {% if train_details %}
+        <ol> 
+            {% for x in  train_details %}
+            <li>Train_id:{{x.Train_id}}</li>
+
+            <ol>
+                <li>Train_name:{{x.Train_name}}</li>
+                <li>Origin_city:{{x.Origin_city}}</li>
+                <li>Destination_city:{{x.Destination_city}}</li>
+                <li>Departure_time:{{x.Departure_time}}</li>
+                <li>Arrival_time:{{x.Arrival_time}}</li>
+            </ol>
+            {% endfor %}
+        </ol>
+        {% endif %}
+    </div>
+</body>
+</html>
